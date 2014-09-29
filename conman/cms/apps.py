@@ -3,10 +3,11 @@ from django.apps import AppConfig
 
 class CMSConfig(AppConfig):
     name = 'conman.cms'
+    _managed_apps = set()
 
-    def __init__(self, *args, **kwargs):
-        self._registry = set()
-        return super().__init__(*args, **kwargs)
+    def manage_app(self, app):
+        self._managed_apps.add(app)
 
-    def register(self, app):
-        self._registry.add(app)
+    @property
+    def managed_apps(self):
+        return self._managed_apps.copy()
