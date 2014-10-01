@@ -1,4 +1,3 @@
-from conman.tests.factories import UserFactory
 from conman.tests.utils import RequestTestCase
 from django.apps import apps
 from django.core.urlresolvers import reverse
@@ -23,6 +22,7 @@ class CMSIndexTest(RequestTestCase):
 
         expected = apps.get_app_config('cms').managed_apps
         self.assertEqual(context['apps'], expected)
+
 
 class CMSIndexIntegrationTest(TestCase):
     def test_get(self):
