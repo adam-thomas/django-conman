@@ -23,3 +23,9 @@ class TestAppRegistration(TestCase):
             self.tree_app.ready()
 
         manage_app.assert_called_with(self.tree_app)
+
+
+class TestCMSIndexURL(TestCase):
+    def test_get_cms_url(self):
+        tree_app = apps.get_app_config('nav_tree')
+        self.assertEqual(tree_app.get_cms_url(), '/cms/nav_tree/')
