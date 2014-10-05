@@ -7,7 +7,7 @@ class TestCMSIndexURL(URLTestCase):
     """Make sure that the CMSIndex view has a URL"""
     def test_url(self):
         self.assert_url_matches_view(
-            views.CMSIndex,
-            '/cms/',
-            'cms:index',
+            views.Index,
+            '/cms/nav_tree/',
+            'cms:nav-tree-index',
         )
