@@ -17,10 +17,19 @@ class TestIndex(TestCase):
 
         self.assertCountEqual(qs, [node, node.parent])
 
-    def test_integration(self):
-        response = self.client.get(reverse('cms:nav_tree:index'))
 
+class TestIndexIntegration(TestCase):
+    view_class = views.Index
+    url = reverse('cms:nav_tree:index')
+
+    def test_status(self):
+        """Index should return a 200."""
+        response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
+
+    def test_template(self):
+        """Index should use the correct template."""
+        response = self.client.get(self.url)
         self.assertTemplateUsed(response, 'nav_tree/cms/node_list.html')
 
 
