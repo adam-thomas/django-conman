@@ -32,6 +32,13 @@ class TestIndexIntegration(TestCase):
         response = self.client.get(self.url)
         self.assertTemplateUsed(response, 'nav_tree/cms/node_list.html')
 
+    def test_content(self):
+        """Index should have useful links"""
+        node = ChildNodeFactory.create()
+        response = self.client.get(self.url)
+        self.assertContains(response, node.url)
+        self.assertContains(response, node.get_cms_url())
+
 
 class TestNodeUpdate(TestCase):
     view_class = views.NodeUpdate

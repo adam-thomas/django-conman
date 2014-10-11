@@ -1,3 +1,6 @@
 {% for node in node_list %}
-    <li>{{ node }} <a href="{{ node.url }}">↪</a></li>
+    <li>
+        <a href="{{ node.get_cms_url }}">{{ node }}</a>
+        <a href="{{ node.url }}">↪</a>
+    </li>
 {% endfor %}
