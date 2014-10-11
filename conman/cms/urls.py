@@ -6,7 +6,8 @@ from . import views
 
 def app_url(app):
     """Prefix an app's urls with its label."""
-    return url(r'^{}/'.format(app.label), include(app.cms_urls))
+    label = app.label
+    return url(r'^{}/'.format(label), include(app.cms_urls, namespace=label))
 
 
 def urls():

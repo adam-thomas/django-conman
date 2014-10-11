@@ -10,4 +10,4 @@ class NavTreeConfig(AppConfig):
         apps.get_app_config('cms').manage_app(self)
 
     def get_cms_url(self):
-        return reverse('cms:nav-tree-index')
+        return reverse('cms:nav_tree:index')

@@ -3,11 +3,11 @@ from incuna_test_utils.testcases.urls import URLTestCase
 from .. import views
 
 
-class TestCMSIndexURL(URLTestCase):
-    """Make sure that the CMSIndex view has a URL."""
+class TestNodeIndexURL(URLTestCase):
+    """Make sure that the Node Index view has a URL."""
     def test_url(self):
         self.assert_url_matches_view(
             views.Index,
             '/cms/nav_tree/',
-            'cms:nav-tree-index',
+            'cms:nav_tree:index',
         )

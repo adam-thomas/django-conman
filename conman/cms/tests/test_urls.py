@@ -33,6 +33,6 @@ class TestCMSURLs(TestCase):
         cms_urls = list(urls.urls())
         expected = [
             url(r'^$', views.CMSIndex.as_view, name='index'),
-            url(r'^example', include(fake_config.cms_urls))
+            url(r'^example', include(fake_config.cms_urls, namespace='example'))
         ]
         self.assertSequenceEqual(cms_urls, expected)
