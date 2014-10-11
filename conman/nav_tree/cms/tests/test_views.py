@@ -20,3 +20,4 @@ class TestIndex(TestCase):
         response = self.client.get(reverse('cms:nav_tree:index'))
 
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'nav_tree/cms/node_list.html')
