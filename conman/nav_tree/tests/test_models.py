@@ -387,3 +387,13 @@ class NodeCheckTest(TestCase):
         self.assertEqual(error.obj, NodeWithoutHandler)
         expected_msg = 'Node subclasses must have a `handler` attribute'
         self.assertEqual(error.msg, expected_msg)
+
+
+class NodeGetCMSURL(TestCase):
+    def test_get_cms_url(self):
+        node = RootNodeFactory.create()
+
+        url = node.get_cms_url()
+
+        expected = '/cms/nav_tree/{}/'.format(node.pk)
+        self.assertEqual(url, expected)

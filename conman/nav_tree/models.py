@@ -1,4 +1,5 @@
 from django.core import checks
+from django.core.urlresolvers import reverse
 from django.db import models
 from polymorphic_tree.managers import PolymorphicMPTTModelManager
 from polymorphic_tree.models import (
@@ -73,6 +74,10 @@ class Node(PolymorphicMPTTModel):
     def __str__(self):
         """Display a Node's class and url."""
         return '{} @ {}'.format(self.__class__.__name__, self.url)
+
+    def get_cms_url(self):
+        """Provide the url of this object in the cms."""
+        return reverse('cms:nav_tree:node-update', kwargs={'pk': self.pk})
 
     def get_handler_class(self):
         """Import a class from the python path string in `self.handler`."""
